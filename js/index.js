@@ -1,6 +1,31 @@
+const modalWindow = document.querySelector('.modal')
+const modalClose = document.querySelector('.modal__close')
+
+const buttonModals = document.querySelectorAll('.modal__button')
+const body = document.querySelector('body')
+
+buttonModals.forEach(item => {
+  item.addEventListener('click', () => {
+    modalWindow.style.display = 'flex'
+    body.classList.add('noscroll')
+  })
+})
+
+modalWindow.addEventListener('click', e => {
+  const isModal = e.target.closest('.modal__inner')
+
+  if (!isModal) {
+    modalWindow.style.display = 'none'
+  }
+})
+
+modalClose.addEventListener('click', () => {
+  modalWindow.style.display = 'none'
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   // Конечная дата
-  const deadline = new Date('2025-11-06T09:59:59')
+  const deadline = new Date('2025-11-09T09:59:59')
 
   // Найдите элементы DOM
   const elDays = document.querySelector('.timer__days')
